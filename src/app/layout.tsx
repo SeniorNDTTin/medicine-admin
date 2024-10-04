@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import React from "react";
+import Footer from "@/partials/footer";
+import Menu from "@/partials/menu";
+import Header from "@/partials/header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,12 +27,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isLogin: boolean = true;
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {isLogin ? (
+          <React.Fragment>
+            <div className="flex">
+              <div className="border p-5 bg-blue-500 text-white font-bold">
+                <Menu />
+              </div>
+              <div className="flex-1">
+                <Header />
+
+                <div className="px-5 py-8">
+                  {children}
+                </div>
+
+                <Footer />
+              </div>
+            </div>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            {children}
+          </React.Fragment>
+        )}
       </body>
     </html>
   );
