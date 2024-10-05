@@ -2,8 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { GiMedicinePills } from "react-icons/gi";
+import ButtonLogout from "@/app/(auth)/logout/buttonLogout";
 
 import "./header.css";
 
@@ -12,10 +12,6 @@ function Header() {
 
   const handleNavigate = () => {
     router.push('/');
-  }
-
-  const handleLogout = () => {
-    router.push('/login');
   }
 
   return (
@@ -30,7 +26,7 @@ function Header() {
           </div>
         </div>
         <div className="header-auth">
-          <Button variant="destructive" onClick={handleLogout}>Logout</Button>
+          <ButtonLogout />
         </div>
       </div>
     </React.Fragment>

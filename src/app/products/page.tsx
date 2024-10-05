@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import ProductsTable from "./productsTable";
 import { setCookie } from "@/helpers/cookies";
+import ProtectedRoute from "@/components/protectedRoute";
 
 function Products() {
   useEffect(() => {
@@ -10,9 +11,9 @@ function Products() {
   }, []);
 
   return (
-    <React.Fragment>
+    <ProtectedRoute>
       <ProductsTable />
-    </React.Fragment>
+    </ProtectedRoute>
   )
 }
 
