@@ -22,7 +22,7 @@ function Header() {
             <GiMedicinePills />
           </div>
           <div className="header-content">
-            THM's Medicine
+            THMs Medicine
           </div>
         </div>
         <div className="header-auth">
