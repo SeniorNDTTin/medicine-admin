@@ -7,7 +7,6 @@ import Footer from "@/partials/footer";
 import Menu from "@/partials/menu";
 import Header from "@/partials/header";
 import { useAuth } from '@/context/authContext';
-import ProtectedRoute from './protectedRoute';
 
 const LayoutContent = ({ children }: { children: React.ReactNode }) => {
   const { isLogin } = useAuth();

@@ -2,10 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
-import Footer from "@/partials/footer";
-import Menu from "@/partials/menu";
-import Header from "@/partials/header";
-import { login } from "@/variables/isLogin";
 import AuthWrapper from "@/components/authWrapper";
 import LayoutContent from "@/components/layoutContent";
 
