@@ -1,21 +1,36 @@
 'use client'
 
 import React from "react";
-import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { GiMedicinePills } from "react-icons/gi";
 
 import "./header.css";
 
 function Header() {
-  const handleClick = () => {
-    console.log("OK");
+  const router = useRouter();
+
+  const handleNavigate = () => {
+    router.push('/');
+  }
+
+  const handleLogout = () => {
+    router.push('/login');
   }
 
   return (
     <React.Fragment>
       <div className="header">
-        <div>IMG</div>
-        <div>
-          <Button variant="destructive" onClick={handleClick}>Logout</Button>
+        <div className="header-logo" onClick={handleNavigate}>
+          <div className="header-icon">
+            <GiMedicinePills />
+          </div>
+          <div className="header-content">
+            THM's Medicine
+          </div>
+        </div>
+        <div className="header-auth">
+          <Button variant="destructive" onClick={handleLogout}>Logout</Button>
         </div>
       </div>
     </React.Fragment>

@@ -1,0 +1,14 @@
+.menu .menu-item {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.menu .menu-item:hover {
+  background-color: orange;
+}
+
+.menu .menu-icon {
+  margin-right: 10px;
+  font-size: 28px;
+}
