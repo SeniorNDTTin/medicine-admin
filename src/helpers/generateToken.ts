@@ -1,4 +1,4 @@
-export const generateToken = (length) => {
+export const generateToken = (length: number) => {
   const str = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
   let result = "";
