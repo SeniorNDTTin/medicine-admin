@@ -17,7 +17,7 @@ function Login() {
   const [email, setEmail] = useState<string>("Admin@gmail.com");
   const [password, setPassword] = useState<string>("123456");
 
-  const handleLogin = (e: any) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (email === 'Admin@gmail.com' && password === '123456') {

@@ -20,7 +20,7 @@ const LayoutContent = ({ children }: { children: React.ReactNode }) => {
       setIsLogin(true);
       router.push("/");
     }
-  }, []);
+  }, [router, setIsLogin]);
 
   return (
     <>
