@@ -31,7 +31,7 @@ function Login() {
 
   return (
     <div className="login">
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleLogin}>
         <div className="grid w-full max-w-sm items-center gap-1.5 mb-5">
           <Label className="font-bold" htmlFor="email">Email</Label>
           <Input type="email" id="email" placeholder="Input your email" value={email} onChange={e => setEmail(e.target.value)} />
@@ -41,7 +41,7 @@ function Login() {
           <Input type="password" id="password" placeholder="Input your password" value={password} onChange={e => setPassword(e.target.value)} />
         </div>
 
-        <Button onClick={handleLogin}>Login</Button>
+        <Button type="submit">Login</Button>
       </form>
     </div>
   );
