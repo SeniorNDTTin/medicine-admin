@@ -2,14 +2,14 @@
 
 import React from "react";
 import ProtectedRoute from "@/components/protectedRoute";
-import ProductsTable from "./productsTable";
+import AccountsTable from "./accountsTable";
 
-function Products() {
+function Accounts() {
   return (
     <ProtectedRoute>
-      <ProductsTable />
+      <AccountsTable />
     </ProtectedRoute>
   )
 }
 
-export default Products;
+export default Accounts;

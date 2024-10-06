@@ -1,15 +1,26 @@
-// components/LayoutContent.tsx
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Footer from "@/partials/footer";
 import Menu from "@/partials/menu";
 import Header from "@/partials/header";
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/authContext';
+import { getCookie } from '@/helpers/cookies';
 
 const LayoutContent = ({ children }: { children: React.ReactNode }) => {
-  const { isLogin } = useAuth();
+  const { isLogin, setIsLogin } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    const token: string = getCookie("token");
+
+    if (token == "tokentestabcxyz") {
+      setIsLogin(true);
+      router.push("/");
+    }
+  }, []);
 
   return (
     <>

@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/authContext";
+import { deleteCookie } from "@/helpers/cookies";
 
 function ButtonLogout() {
   const router = useRouter();
@@ -11,6 +12,7 @@ function ButtonLogout() {
 
   const handleLogout = () => {
     setIsLogin(false);
+    deleteCookie("token");
     router.push('/login');
   }
 

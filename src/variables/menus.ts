@@ -4,6 +4,7 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { CiMedicalCase } from "react-icons/ci";
 import { BiCategory } from "react-icons/bi";
 import { MdOutlinePayment } from "react-icons/md";
+import { MdSupervisorAccount } from "react-icons/md";
 
 export const menus: {
   path: string;
@@ -29,5 +30,10 @@ export const menus: {
       path: "/payments",
       title: "Payments",
       icon: MdOutlinePayment
+    },
+    {
+      path: "/accounts",
+      title: "Accounts",
+      icon: MdSupervisorAccount
     }
   ];

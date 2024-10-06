@@ -1,6 +1,6 @@
 import React from "react";
-import ProductsCategoryTable from "./products-categoryTable";
 import ProtectedRoute from "@/components/protectedRoute";
+import ProductsCategoryTable from "./products-categoryTable";
 
 function ProductsCategory() {
   return (
