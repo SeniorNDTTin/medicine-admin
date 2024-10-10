@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { setCookie } from '@/helpers/cookies';
 
 import "./login.css";
+import { login } from '@/services/login';
 
 function Login() {
   const { setIsLogin } = useAuth();
@@ -17,10 +18,12 @@ function Login() {
   const [email, setEmail] = useState<string>("Admin@gmail.com");
   const [password, setPassword] = useState<string>("123456");
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (email === 'Admin@gmail.com' && password === '123456') {
+    const result = await login(email, password);
+
+    if (result.token) {
       setIsLogin(true);
       setCookie("token", "tokentestabcxyz", 1);
       router.push('/');

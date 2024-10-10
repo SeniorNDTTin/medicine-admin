@@ -1,4 +1,5 @@
-const DOMAIN = "http://localhost:3002/";
+// const DOMAIN = "http://localhost:3002/";
+const DOMAIN = "http://127.0.0.1:8000/api/";
 
 export const get = async (PATH: string) => {
   const response = await fetch(`${DOMAIN}${PATH}`);
