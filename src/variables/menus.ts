@@ -22,8 +22,8 @@ export const menus: {
       icon: CiMedicalCase
     },
     {
-      path: "/products-category",
-      title: "Products Category",
+      path: "/types",
+      title: "Types",
       icon: BiCategory
     },
     {
