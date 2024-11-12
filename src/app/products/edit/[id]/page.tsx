@@ -4,9 +4,6 @@ import React, { useEffect, useState } from "react";
 
 import {
   Button,
-  Card,
-  Checkbox,
-  Descriptions,
   Form,
   Input,
   Select,
@@ -37,7 +34,7 @@ export default function ProductEdit({ params }: { params: { id: string } }) {
       setTypes(types);
     };
     fetchApi();
-  }, [params, reload]);
+  }, [params, reload, id]);
 
   const handleSubmit = async (values: any) => {
     const result = await updateProduct(id, values);

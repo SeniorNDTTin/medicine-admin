@@ -1,4 +1,4 @@
-import { get } from "@/utils/request";
+import { del, get, patch, post } from "@/utils/request";
 
 export const getTypes = async () => {
     const result = await get("types");
@@ -8,4 +8,18 @@ export const getTypes = async () => {
 export const getType = async (id: string) => {
     const result = await get(`types/${id}`);
     return result;
+}
+
+export const createType = async (options: any) => {
+    const result = await post(`types/${id}`, options);
+    return result;
+}
+
+export const updateType = async (id: string, options: any) => {
+    const result = await patch("types", id, options);
+    return result;
+}
+
+export const deleteType = async (id: string) => {
+    await del("types", id);
 }

@@ -1,25 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { Button, Space, Table } from "antd";
+import { deleteType, getTypes } from "@/services/type";
 
 function TypeTable() {
   const router = useRouter();
-  
+
+  const [reload, setReload] = useState(false);
+
+  // const [dataSource, setDataSource] = useState([]);
+  // useEffect(() => {
+  //   const fetchApi = async () => {
+  //     const result = await getTypes();
+  //     setDataSource(result);
+  //   }
+  //   fetchApi();
+  // }, [reload]);
+
   const dataSource = [
     {
-      key: '1',
+      id: '1',
       name: 'Mike',
-      age: 32,
-      address: '10 Downing Street',
+      description: "mota",
     },
     {
-      key: '2',
+      id: '2',
       name: 'John',
-      age: 42,
-      address: '10 Downing Street',
+      description: "mota",
     },
   ];
 
@@ -30,14 +40,9 @@ function TypeTable() {
       key: 'name',
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
+      title: 'Description',
+      dataIndex: 'description',
+      key: 'description',
     },
     {
       title: "Action",
@@ -46,15 +51,8 @@ function TypeTable() {
         <Space>
           <Button
             type="primary"
-            style={{ backgroundColor: "#1890ff", borderColor: "#1890ff" }}
-            onClick={() => router.push(`/products/detail/${record.id}`)}
-          >
-            Detail
-          </Button>
-          <Button
-            type="primary"
             style={{ backgroundColor: "#ffa940", borderColor: "#ffa940" }}
-            onClick={() => router.push(`/products/edit/${record.id}`)}
+            onClick={() => router.push(`/types/edit/${record.id}`)}
           >
             Edit
           </Button>
@@ -62,7 +60,9 @@ function TypeTable() {
             type="primary"
             danger
             style={{ backgroundColor: "#f5222d", borderColor: "#f5222d" }}
-            onClick={() => {console.log("OK");
+            onClick={async () => {
+              await deleteType(record.id);
+              setReload(!reload);
             }}
           >
             Delete
@@ -72,8 +72,32 @@ function TypeTable() {
     }
   ];
 
+  const onClickAdd = () => {
+    router.push("/types/add");
+  }
+
   return (
     <React.Fragment>
+      <div style={
+        {
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: "10px",
+        }
+      }>
+        <Button
+          onClick={onClickAdd}
+          type="primary"
+          style={{
+            backgroundColor: "green",
+            padding: "20px",
+            fontWeight: "bold"
+          }}
+        >
+          Add
+        </Button>
+      </div>
+
       <Table dataSource={dataSource} columns={columns} />;
     </React.Fragment>
   )

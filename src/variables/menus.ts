@@ -27,11 +27,6 @@ export const menus: {
       icon: BiCategory
     },
     {
-      path: "/payments",
-      title: "Payments",
-      icon: MdOutlinePayment
-    },
-    {
       path: "/accounts",
       title: "Accounts",
       icon: MdSupervisorAccount
