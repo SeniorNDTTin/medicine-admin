@@ -11,15 +11,15 @@ export const getType = async (id: string) => {
 }
 
 export const createType = async (options: any) => {
-    const result = await post(`types/${id}`, options);
+    const result = await post("types/create", options);
     return result;
 }
 
 export const updateType = async (id: string, options: any) => {
-    const result = await patch("types", id, options);
+    const result = await patch("types/update/", id, options);
     return result;
 }
 
 export const deleteType = async (id: string) => {
-    await del("types", id);
+    await del("types/delete/", id);
 }

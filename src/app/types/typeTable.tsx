@@ -5,33 +5,22 @@ import { useRouter } from "next/navigation";
 
 import { Button, Space, Table } from "antd";
 import { deleteType, getTypes } from "@/services/type";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function TypeTable() {
   const router = useRouter();
 
   const [reload, setReload] = useState(false);
 
-  // const [dataSource, setDataSource] = useState([]);
-  // useEffect(() => {
-  //   const fetchApi = async () => {
-  //     const result = await getTypes();
-  //     setDataSource(result);
-  //   }
-  //   fetchApi();
-  // }, [reload]);
-
-  const dataSource = [
-    {
-      id: '1',
-      name: 'Mike',
-      description: "mota",
-    },
-    {
-      id: '2',
-      name: 'John',
-      description: "mota",
-    },
-  ];
+  const [dataSource, setDataSource] = useState([]);
+  useEffect(() => {
+    const fetchApi = async () => {
+      const result = await getTypes();
+      setDataSource(result);
+    }
+    fetchApi();
+  }, [reload]);
 
   const columns = [
     {
@@ -63,6 +52,8 @@ function TypeTable() {
             onClick={async () => {
               await deleteType(record.id);
               setReload(!reload);
+
+              toast.success("Delete type successfully");
             }}
           >
             Delete
@@ -78,6 +69,8 @@ function TypeTable() {
 
   return (
     <React.Fragment>
+      <ToastContainer />
+
       <div style={
         {
           display: "flex",

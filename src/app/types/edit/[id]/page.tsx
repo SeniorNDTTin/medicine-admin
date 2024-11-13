@@ -22,20 +22,14 @@ function TypeEdit({ params }: props) {
 
   const [reload, setReload] = useState(false);
 
-  const data = {
-    id: '1',
-    name: 'Mike',
-    description: "mota",
-  };
-
-  // const [data, setData] = useState();
-  // useEffect(() => {
-  //   const fetchApi = async () => {
-  //     const result = await getType(id);
-  //     setData(result);
-  //   }
-  //   fetchApi();
-  // }, [id]); 
+  const [data, setData] = useState();
+  useEffect(() => {
+    const fetchApi = async () => {
+      const result = await getType(id);
+      setData(result);
+    }
+    fetchApi();
+  }, [id]); 
 
   const handleFinish = async (values: any) => {
     await updateType(id, values);
@@ -58,7 +52,7 @@ function TypeEdit({ params }: props) {
           textAlign: "center",
         }}
       >
-        Product Edit
+        Type Edit
       </h1>
 
       {data && (

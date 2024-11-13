@@ -34,9 +34,7 @@ export const patch = async (PATH: string, id: string | number, options: unknown)
 }
 
 export const del = async (PATH: string, id: string | number) => {
-  const response = await fetch(`${DOMAIN}${PATH}${id}`, {
+  await fetch(`${DOMAIN}${PATH}${id}`, {
     method: "DELETE",
   });
-  const result = await response.json();
-  return result;
 };

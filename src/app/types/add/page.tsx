@@ -8,14 +8,19 @@ import GoBack from "@/components/GoBack";
 
 import { Button, Form, Input } from "antd";
 import { createType } from "@/services/type";
+import { useRouter } from "next/navigation";
 
 function TypeAdd() {
+  const router = useRouter();
+
   const [reload, setReload] = useState(false);
 
   const handleFinish = async (values: any) => {
     await createType(values);
     toast("Type was updated successfully!");
     setReload(!reload);
+
+    router.push("/types");
   }
 
   return (
@@ -42,6 +47,10 @@ function TypeAdd() {
         autoComplete="off"
         layout="vertical"
       >
+        <Form.Item label="Id (Mxxx)" name="id">
+          <Input />
+        </Form.Item>
+
         <Form.Item label="Name" name="name">
           <Input />
         </Form.Item>

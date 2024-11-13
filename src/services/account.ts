@@ -11,15 +11,15 @@ export const getAccount = async (id: string) => {
 }
 
 export const createAccount = async (options: any) => {
-    const result = await post(`accounts/${id}`, options);
+    const result = await post("accounts/create", options);
     return result;
 }
 
 export const updateAccount = async (id: string, options: any) => {
-    const result = await patch("accounts", id, options);
+    const result = await patch(`accounts/update/${id}`, id, options);
     return result;
 }
 
 export const deleteAccount = async (id: string) => {
-    await del("accounts", id);
+    await del("accounts/delete/", id);
 }
