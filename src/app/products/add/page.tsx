@@ -35,12 +35,12 @@ export default function ProductAdd() {
     const result = await createProduct(values);
 
     if (!result.name) {
-      toast.error("Product was added failed!");
+      toast.error("Có lỗi xảy ra!");
       return;
     }
 
     router.push("/products");
-    toast.success("Product was added successfully!");
+    toast.success("Sản phẩm đã được tạo mới một cách thành công!");
   };
 
   return (
@@ -58,7 +58,7 @@ export default function ProductAdd() {
           textAlign: "center",
         }}
       >
-        Product Add
+        Thêm Sản Phẩm
       </h1>
 
       <Form
@@ -68,19 +68,23 @@ export default function ProductAdd() {
         autoComplete="off"
         layout="vertical"
       >
-        <Form.Item label="Name" name="name">
+        <Form.Item label="Tên" name="name">
           <Input />
         </Form.Item>
 
-        <Form.Item label="Scientific Name" name="scientific_name">
+        <Form.Item label="Ảnh" name="image">
           <Input />
         </Form.Item>
 
-        <Form.Item label="Other Name" name="other_name">
+        <Form.Item label="Tên khoa học" name="scientific_name">
           <Input />
         </Form.Item>
 
-        <Form.Item label="Type Name" name="category_id">
+        <Form.Item label="Tên khác" name="other_name">
+          <Input />
+        </Form.Item>
+
+        <Form.Item label="Loại" name="category_id">
           <Select>
             {types.length &&
               types.map((item: any) => (
@@ -91,20 +95,20 @@ export default function ProductAdd() {
           </Select>
         </Form.Item>
 
-        <Form.Item label="Stock" name="stock">
+        <Form.Item label="Số lượng" name="stock">
           <Input type="number" />
         </Form.Item>
 
-        <Form.Item label="Price" name="price">
+        <Form.Item label="Giá" name="price">
           <Input type="number" />
         </Form.Item>
 
-        <Form.Item label="Origin" name="origin">
+        <Form.Item label="Xuất xứ" name="origin">
           <Input />
         </Form.Item>
 
-        <Form.Item label="Expiry" name="expiry">
-          <Input />
+        <Form.Item label="Ngày" name="expiry">
+          <Input type="date" />
         </Form.Item>
 
         <div
@@ -115,7 +119,7 @@ export default function ProductAdd() {
         >
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              Add
+              Thêm
             </Button>
           </Form.Item>
         </div>

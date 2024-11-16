@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import { Card, Descriptions } from "antd";
+import { Card, Descriptions, Image } from "antd";
 
 import { getProduct } from "@/services/product";
 import { getType } from "@/services/type";
@@ -22,14 +22,12 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
       setProduct(product);
     };
     fetchApi();
-  }, [params]);
-
-  console.log(product);
+  }, [id]);
 
   return (
     <React.Fragment>
       <GoBack />
-      
+
       <h1
         style={{
           fontSize: 48,
@@ -39,11 +37,18 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
           textAlign: "center",
         }}
       >
-        Product Detail
+        Chi Tiết Sản Phẩm
       </h1>
 
       {product && (
         <>
+          <div style={{
+            display: "flex",
+            justifyContent: "center"
+          }}>
+            <Image src={product.image} alt={product.name} />
+          </div>
+
           <Card
             style={{
               margin: "20px auto",
@@ -52,28 +57,28 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
             }}
           >
             <Descriptions bordered column={1}>
-              <Descriptions.Item label="Name">
+              <Descriptions.Item label="Tên">
                 {product.name}
               </Descriptions.Item>
-              <Descriptions.Item label="Scientific Name">
+              <Descriptions.Item label="Tên khoa học">
                 {product.scientific_name}
               </Descriptions.Item>
-              <Descriptions.Item label="Other Name">
+              <Descriptions.Item label="Tên khác">
                 {product.other_name}
               </Descriptions.Item>
-              <Descriptions.Item label="Type">
+              <Descriptions.Item label="Loại">
                 {product.type.name}
               </Descriptions.Item>
-              <Descriptions.Item label="Price">
+              <Descriptions.Item label="Giá">
                 ${product.price}
               </Descriptions.Item>
-              <Descriptions.Item label="Stock">
+              <Descriptions.Item label="Số lượng">
                 {product.stock} items
               </Descriptions.Item>
-              <Descriptions.Item label="Origin">
+              <Descriptions.Item label="Xuất xứ">
                 {product.origin}
               </Descriptions.Item>
-              <Descriptions.Item label="Expiry">
+              <Descriptions.Item label="Ngày hết hạn">
                 {product.expiry}
               </Descriptions.Item>
             </Descriptions>

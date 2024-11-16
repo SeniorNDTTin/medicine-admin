@@ -31,7 +31,7 @@ function Products() {
             fontWeight: "bold"
           }}
         >
-          Add
+          Thêm
         </Button>
       </div>
 

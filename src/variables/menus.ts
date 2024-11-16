@@ -3,7 +3,7 @@ import { IconType } from "react-icons";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { CiMedicalCase } from "react-icons/ci";
 import { BiCategory } from "react-icons/bi";
-import { MdOutlinePayment } from "react-icons/md";
+import { IoBagCheckOutline } from "react-icons/io5";
 import { MdSupervisorAccount } from "react-icons/md";
 
 export const menus: {
@@ -13,22 +13,27 @@ export const menus: {
 }[] = [
     {
       path: "/",
-      title: "Dashboard",
+      title: "Tổng quan",
       icon: AiOutlineDashboard
     },
     {
       path: "/products",
-      title: "Products",
+      title: "Sản phẩm",
       icon: CiMedicalCase
     },
     {
       path: "/types",
-      title: "Types",
+      title: "Loại",
       icon: BiCategory
     },
     {
+      path: "/orders",
+      title: "Đơn hàng",
+      icon: IoBagCheckOutline
+    },
+    {
       path: "/accounts",
-      title: "Accounts",
+      title: "Tài khoản",
       icon: MdSupervisorAccount
     }
   ];

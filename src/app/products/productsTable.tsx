@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { Button, Modal, Space, Table } from "antd";
+import { Button, Image, Modal, Space, Table } from "antd";
 
 import { deleteProduct, getProducts } from "@/services/product";
 import { toast, ToastContainer } from "react-toastify";
@@ -25,27 +25,42 @@ function ProductsTable() {
 
   const columns = [
     {
-      title: "Name",
+      title: "Ảnh",
+      key: "image",
+      render: (_: any, record: any) => (
+        <div style={{ width: "60%" }}>
+          <Image
+            src={record.image}
+            alt={record.name}
+            width={100}
+            height={100}
+            style={{ objectFit: 'contain' }}
+          />
+        </div>
+      )
+    },
+    {
+      title: "Tên",
       dataIndex: "name",
       key: "name",
     },
     {
-      title: "Scientific Name",
+      title: "Tên khoa học",
       dataIndex: "scientific_name",
       key: "scientific_name",
     },
     {
-      title: "Price",
+      title: "Giá",
       dataIndex: "price",
       key: "price",
     },
     {
-      title: "Stock",
+      title: "Số lượng",
       dataIndex: "stock",
       key: "stock",
     },
     {
-      title: "Action",
+      title: "Hành động",
       key: "action",
       render: (_: any, record: any) => (
         <Space>
@@ -54,14 +69,14 @@ function ProductsTable() {
             style={{ backgroundColor: "#1890ff", borderColor: "#1890ff" }}
             onClick={() => router.push(`/products/detail/${record.id}`)}
           >
-            Detail
+            Xem
           </Button>
           <Button
             type="primary"
             style={{ backgroundColor: "#ffa940", borderColor: "#ffa940" }}
             onClick={() => router.push(`/products/edit/${record.id}`)}
           >
-            Edit
+            Sửa
           </Button>
           <Button
             type="primary"
@@ -72,7 +87,7 @@ function ProductsTable() {
               showModal();
             }}
           >
-            Delete
+            Xóa
           </Button>
         </Space>
       ),
@@ -85,9 +100,9 @@ function ProductsTable() {
   const handleOk = async () => {
     if (productIdDeleted) {
       await deleteProduct(productIdDeleted);
-      toast.success("Product deleted successfully");
+      toast.success("Sản phẩm đã được xóa một cách thành công!");
     } else {
-      toast.error("Product id is missing to delete");
+      toast.error("Có lỗi xảy ra!");
     }
 
     handleCancel();
@@ -100,8 +115,21 @@ function ProductsTable() {
   return (
     <React.Fragment>
       <ToastContainer />
+
+      <h1
+        style={{
+          fontSize: 48,
+          fontWeight: 700,
+          color: "#333",
+          marginBottom: 20,
+          textAlign: "center",
+        }}
+      >
+        Danh Sách Sản Phẩm
+      </h1>
+
       <Modal
-        title="Are you sure to delete this product?"
+        title="Bạn có chắc muốn xóa sản phẩm này không?"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}

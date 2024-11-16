@@ -8,7 +8,6 @@ import GoBack from "@/components/GoBack";
 
 import { getType, updateType } from "@/services/type";
 import { Button, Form, Input } from "antd";
-import { log } from "console";
 
 
 type props = {
@@ -33,7 +32,7 @@ function TypeEdit({ params }: props) {
 
   const handleFinish = async (values: any) => {
     await updateType(id, values);
-    toast("Type was updated successfully!");
+    toast("Loại đã được xóa một cách thành công!");
     setReload(!reload);
   }
 
@@ -52,7 +51,7 @@ function TypeEdit({ params }: props) {
           textAlign: "center",
         }}
       >
-        Type Edit
+        Chỉnh Sửa Loại
       </h1>
 
       {data && (
@@ -64,11 +63,11 @@ function TypeEdit({ params }: props) {
             autoComplete="off"
             layout="vertical"
           >
-            <Form.Item label="Name" name="name">
+            <Form.Item label="Tên" name="name">
               <Input />
             </Form.Item>
 
-            <Form.Item label="Description" name="description">
+            <Form.Item label="Mô tả" name="description">
               <Input />
             </Form.Item>
 
@@ -80,7 +79,7 @@ function TypeEdit({ params }: props) {
             >
               <Form.Item>
                 <Button type="primary" htmlType="submit">
-                  Update
+                  Cập nhật
                 </Button>
               </Form.Item>
             </div>

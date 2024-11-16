@@ -17,7 +17,7 @@ function ButtonLogout() {
   }
 
   return (
-    <Button variant="destructive" onClick={handleLogout}>Logout</Button>
+    <Button variant="destructive" onClick={handleLogout}>Đăng xuất</Button>
   )
 }
 

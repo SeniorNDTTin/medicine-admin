@@ -16,7 +16,7 @@ function GoBack() {
         }}
       >
         <Button type="primary" onClick={handleClick}>
-          Go Back
+          Trở lại
         </Button>
       </div>
     </React.Fragment>

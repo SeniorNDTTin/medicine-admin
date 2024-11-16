@@ -38,7 +38,7 @@ function TypeAdd() {
           textAlign: "center",
         }}
       >
-        Type Add
+        Thêm Loại
       </h1>
 
       <Form
@@ -51,11 +51,11 @@ function TypeAdd() {
           <Input />
         </Form.Item>
 
-        <Form.Item label="Name" name="name">
+        <Form.Item label="Tên" name="name">
           <Input />
         </Form.Item>
 
-        <Form.Item label="Description" name="description">
+        <Form.Item label="Mô tả" name="description">
           <Input />
         </Form.Item>
 
@@ -67,7 +67,7 @@ function TypeAdd() {
         >
           <Form.Item>
             <Button type="primary" htmlType="submit">
-              Create
+              Thêm
             </Button>
           </Form.Item>
         </div>

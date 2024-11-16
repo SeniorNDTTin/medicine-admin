@@ -40,9 +40,9 @@ function ChartSale() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Orders Chart</CardTitle>
+        <CardTitle>Biểu đồ các đơn hàng</CardTitle>
         <CardDescription>
-          Showing total orders for the last 6 months
+          Tổng các đơn hàng trong 6 tháng qua
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -81,10 +81,10 @@ function ChartSale() {
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+              Tăng 5.2% trong tháng này <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              January - June 2024
+              01 - 06 2024
             </div>
           </div>
         </div>

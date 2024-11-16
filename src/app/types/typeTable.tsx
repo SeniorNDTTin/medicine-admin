@@ -24,17 +24,17 @@ function TypeTable() {
 
   const columns = [
     {
-      title: 'Name',
+      title: 'Tên',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Description',
+      title: 'Mô tả',
       dataIndex: 'description',
       key: 'description',
     },
     {
-      title: "Action",
+      title: "Hành động",
       key: "action",
       render: (_: any, record: any) => (
         <Space>
@@ -43,7 +43,7 @@ function TypeTable() {
             style={{ backgroundColor: "#ffa940", borderColor: "#ffa940" }}
             onClick={() => router.push(`/types/edit/${record.id}`)}
           >
-            Edit
+            Sửa
           </Button>
           <Button
             type="primary"
@@ -56,7 +56,7 @@ function TypeTable() {
               toast.success("Delete type successfully");
             }}
           >
-            Delete
+            Xóa
           </Button>
         </Space>
       ),
@@ -70,6 +70,18 @@ function TypeTable() {
   return (
     <React.Fragment>
       <ToastContainer />
+
+      <h1
+        style={{
+          fontSize: 48,
+          fontWeight: 700,
+          color: "#333",
+          marginBottom: 20,
+          textAlign: "center",
+        }}
+      >
+        Danh Sách Loại
+      </h1>
 
       <div style={
         {
@@ -87,11 +99,11 @@ function TypeTable() {
             fontWeight: "bold"
           }}
         >
-          Add
+          Thêm
         </Button>
       </div>
 
-      <Table dataSource={dataSource} columns={columns} />;
+      <Table dataSource={dataSource} columns={columns} />
     </React.Fragment>
   )
 }

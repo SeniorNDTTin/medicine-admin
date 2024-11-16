@@ -1,35 +1,33 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Button, Space, Table } from "antd";
-import { deleteAccount, getAccounts } from "@/services/account";
+import { Typography } from 'antd';
+const { Text } = Typography;
+
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getOrders } from "@/services/order";
 
-function AccountTable() {
+function OrderTable() {
+  const router = useRouter();
 
   const [reload, setReload] = useState(false);
+  const [data, setData] = useState([]);
 
-  const [dataSource, setDataSource] = useState([]);
   useEffect(() => {
-    const fetchApi = async () => {
-      const result = await getAccounts();
-      setDataSource(result);
+    const fetchData = async () => {
+      const result = await getOrders();
+      setData(result);
     };
-    fetchApi();
+    fetchData();
   }, [reload]);
 
   const columns = [
     {
-      title: "Họ tên",
+      title: "Tên",
       dataIndex: "full_name",
       key: "full_name",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
     },
     {
       title: "SĐT",
@@ -38,8 +36,19 @@ function AccountTable() {
     },
     {
       title: "Trạng thái",
-      dataIndex: "status",
       key: "status",
+      render: (_: any, record: any) => {
+        if (record.status === "UNPAID") {
+          return <Text type="warning">Chưa thanh toán</Text>
+        } else {
+          return <Text type="success">Đã thanh toán</Text>
+        }
+      }
+    },
+    {
+      title: "Tổng tiền",
+      dataIndex: "total_price",
+      key: "total_price",
     },
     {
       title: "Hành động",
@@ -48,21 +57,16 @@ function AccountTable() {
         <Space>
           <Button
             type="primary"
-            danger
-            style={{ backgroundColor: "#f5222d", borderColor: "#f5222d" }}
-            onClick={async () => {
-              await deleteAccount(record.id);
-
-              toast.success("Tài khoản đã được xóa một cách thành công!");
-              setReload(!reload);
-            }}
+            style={{ backgroundColor: "#1890ff", borderColor: "#1890ff" }}
+            onClick={() => router.push(`/orders/detail/${record.id}`)}
           >
-            Xóa
+            Xem
           </Button>
         </Space>
       ),
     },
   ];
+
   return (
     <React.Fragment>
       <ToastContainer />
@@ -76,12 +80,12 @@ function AccountTable() {
           textAlign: "center",
         }}
       >
-        Danh Sách Tài Khoản
+        Danh Sách Đơn Hàng
       </h1>
 
-      <Table dataSource={dataSource} columns={columns} />;
+      <Table dataSource={data} columns={columns} />;
     </React.Fragment>
   );
 }
 
-export default AccountTable;
+export default OrderTable;
